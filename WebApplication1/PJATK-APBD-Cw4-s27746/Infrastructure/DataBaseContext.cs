@@ -5,6 +5,12 @@ namespace WebApplication1.PJATK_APBD_Cw4_s27746.Infrastructure;
 
 public class DataBaseContext(DbContextOptions options) : DbContext(options)
 {
+    
+    DbSet<PCs> PCs { get; set; }
+    DbSet<Components> Components { get; set; }
+    DbSet<ComponentManufacturers> ComponentManufacturers { get; set; }
+    DbSet<PCComponents> PCComponents { get; set; }
+    DbSet<ComponentTypes> ComponentTypes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -25,6 +31,8 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
                 options.ToTable("ComponentTypes");
                 options.Property(p => p.Abbreviation).HasMaxLength(30);
                 options.Property(p => p.Name).HasMaxLength(150);
+                
+                options.HasMany(p=>p.Components).WithOne(p=>p.ComponentType).HasForeignKey(p=>p.ComponentTypesId);
             }
         );
 
@@ -35,13 +43,19 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
             options.Property(p => p.Abbreviation).HasMaxLength(30);
             options.Property(p => p.FullName).HasMaxLength(300);
             options.Property(p=>p.FoundationDate).HasColumnType("date");
+
+            options.HasMany(p => p.Components).WithOne(p => p.ComponentManufacturer).HasForeignKey
+                (p => p.ComponentManufacturersId);
         });
 
         modelBuilder.Entity<PCComponents>(options =>
         {
-            options.HasKey(p => p.PCId);
+            options.HasKey(p => new {p.PCId, p.ComponentCode});
             options.ToTable("PCComponents");
             options.Property(p => p.ComponentCode).HasColumnType("char(10)");
+            
+            options.HasOne(p => p.PCs).WithMany(p => p.PCcomponents).HasForeignKey(p => p.PCId);
+            options.HasOne(p=>p.Components).WithMany(p => p.PCcomponents).HasForeignKey(p=>p.ComponentCode);
         });
 
         modelBuilder.Entity<Components>(options =>

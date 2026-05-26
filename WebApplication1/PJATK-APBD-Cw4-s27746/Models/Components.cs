@@ -8,5 +8,8 @@ public class Components
     public int ComponentManufacturersId { get; set; }
     public int ComponentTypesId { get; set; }
 
+
+    public ComponentManufacturers ComponentManufacturer { get; set; } = null!;
+    public ComponentTypes ComponentType { get; set; } = null!;
     public IEnumerable<PCComponents> PCcomponents { get; set; } = [];
 }
