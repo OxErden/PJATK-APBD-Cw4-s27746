@@ -8,4 +8,6 @@ public class PCs
     public int warranty { get; set; }
     public DateTime created_at { get; set; }
     public int stock { get; set; }
+
+    public IEnumerable<PCComponents> PCcomponents { get; set; } = [];
 }

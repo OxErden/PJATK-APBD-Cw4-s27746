@@ -7,4 +7,6 @@ public class Components
     public string? Description { get; set; }
     public int ComponentManufacturersId { get; set; }
     public int ComponentTypesId { get; set; }
+
+    public IEnumerable<PCComponents> PCcomponents { get; set; } = [];
 }
