@@ -23,6 +23,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
             options.Property(p => p.Name).HasMaxLength(50);
             options.Property(p => p.weight).HasColumnType("float(5)");
             options.Property(p => p.created_at).HasColumnType("datetime");
+            
         });
 
         modelBuilder.Entity<ComponentTypes>(options =>
@@ -61,6 +62,7 @@ public class DataBaseContext(DbContextOptions options) : DbContext(options)
         modelBuilder.Entity<Components>(options =>
         {
             options.HasKey(p => p.Code);
+            options.Property(p => p.Code).HasColumnType("char(10)");
             options.ToTable("Components");
             options.Property(p => p.Name).HasMaxLength(300);
         });

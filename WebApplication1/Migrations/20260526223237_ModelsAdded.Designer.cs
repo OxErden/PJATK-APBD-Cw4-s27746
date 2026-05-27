@@ -12,7 +12,7 @@ using WebApplication1.PJATK_APBD_Cw4_s27746.Infrastructure;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20260526222142_ModelsAdded")]
+    [Migration("20260526223237_ModelsAdded")]
     partial class ModelsAdded
     {
         /// <inheritdoc />
@@ -73,7 +73,7 @@ namespace WebApplication1.Migrations
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.Components", b =>
                 {
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("char(10)");
 
                     b.Property<int>("ComponentManufacturersId")
                         .HasColumnType("int");

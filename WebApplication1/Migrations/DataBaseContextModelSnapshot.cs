@@ -70,7 +70,7 @@ namespace WebApplication1.Migrations
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.Components", b =>
                 {
                     b.Property<string>("Code")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("char(10)");
 
                     b.Property<int>("ComponentManufacturersId")
                         .HasColumnType("int");

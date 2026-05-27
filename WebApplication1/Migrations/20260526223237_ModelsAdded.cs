@@ -61,7 +61,7 @@ namespace WebApplication1.Migrations
                 name: "Components",
                 columns: table => new
                 {
-                    Code = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Code = table.Column<string>(type: "char(10)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ComponentManufacturersId = table.Column<int>(type: "int", nullable: false),
