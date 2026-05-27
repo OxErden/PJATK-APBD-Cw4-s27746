@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication1.PJATK_APBD_Cw4_s27746.Infrastructure;
 
@@ -11,9 +12,11 @@ using WebApplication1.PJATK_APBD_Cw4_s27746.Infrastructure;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20260527202045_seeding")]
+    partial class seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,29 +47,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentManufacturers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Abbreviation = "INTEL",
-                            FoundationDate = new DateOnly(1968, 7, 18),
-                            FullName = "Intel Corporation"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Abbreviation = "AMD",
-                            FoundationDate = new DateOnly(1969, 5, 1),
-                            FullName = "Advanced Micro Devices"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Abbreviation = "NVIDIA",
-                            FoundationDate = new DateOnly(1993, 4, 5),
-                            FullName = "Nvidia Corporation"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.ComponentTypes", b =>
@@ -88,26 +68,6 @@ namespace WebApplication1.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ComponentTypes", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Abbreviation = "CPU",
-                            Name = "Central Processing Unit"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Abbreviation = "GPU",
-                            Name = "Graphics Processing Unit"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Abbreviation = "RAM",
-                            Name = "Random Access Memory"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.Components", b =>
@@ -135,32 +95,6 @@ namespace WebApplication1.Migrations
                     b.HasIndex("ComponentTypesId");
 
                     b.ToTable("Components", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Code = "CPU0000001",
-                            ComponentManufacturersId = 1,
-                            ComponentTypesId = 1,
-                            Description = "High-end CPU",
-                            Name = "Intel Core i9"
-                        },
-                        new
-                        {
-                            Code = "GPU0000001",
-                            ComponentManufacturersId = 3,
-                            ComponentTypesId = 2,
-                            Description = "High-end GPU",
-                            Name = "RTX 4090"
-                        },
-                        new
-                        {
-                            Code = "RAM0000001",
-                            ComponentManufacturersId = 2,
-                            ComponentTypesId = 3,
-                            Description = "Fast RAM",
-                            Name = "DDR5 32GB"
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.PCComponents", b =>
@@ -179,26 +113,6 @@ namespace WebApplication1.Migrations
                     b.HasIndex("ComponentCode");
 
                     b.ToTable("PCComponents", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            PCId = 1,
-                            ComponentCode = "CPU0000001",
-                            amount = 1
-                        },
-                        new
-                        {
-                            PCId = 1,
-                            ComponentCode = "GPU0000001",
-                            amount = 2
-                        },
-                        new
-                        {
-                            PCId = 2,
-                            ComponentCode = "RAM0000001",
-                            amount = 4
-                        });
                 });
 
             modelBuilder.Entity("WebApplication1.PJATK_APBD_Cw4_s27746.Models.PCs", b =>
@@ -239,24 +153,6 @@ namespace WebApplication1.Migrations
                             stock = 25,
                             warranty = 5,
                             weight = 10f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Gaming Beast X",
-                            created_at = new DateTime(2026, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            stock = 5,
-                            warranty = 36,
-                            weight = 12f
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Office Mini Pro",
-                            created_at = new DateTime(2026, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            stock = 12,
-                            warranty = 24,
-                            weight = 4f
                         });
                 });
 

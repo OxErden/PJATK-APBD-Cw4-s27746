@@ -1,4 +1,6 @@
-﻿namespace WebApplication1.PJATK_APBD_Cw4_s27746.DTO;
+﻿using WebApplication1.PJATK_APBD_Cw4_s27746.Models;
+
+namespace WebApplication1.PJATK_APBD_Cw4_s27746.DTO;
 
 public class PcGetAllResponse()
 {
@@ -8,4 +10,5 @@ public class PcGetAllResponse()
     public int Warranty {get; set;}
     public DateTime CreatedAt {get; set;}
     public int Stock {get; set;}
+    
 }
